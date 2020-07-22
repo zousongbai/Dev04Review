@@ -18,6 +18,9 @@ class Projects(models.Model):
     # ②需要继承models当中的Model
 
     # （3）步骤三：以类属性的形式添加数据表的字段
+    # 自己指定主键
+    id = models.AutoField(primary_key=True)
+
     # ①项目名称
     name = models.CharField(max_length=200)
     # 备注：
