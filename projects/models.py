@@ -34,6 +34,16 @@ class Projects(models.Model):
     # ②项目经理的信息
     leader = models.CharField(max_length=50)
 
+    # desc=models.TextField(verbose_name='项目简介',help_text='项目简介',null=True,blank=True,default='xxx简介')
+    # TextField：长文本，没有长度限制
+    # null：指定数据在保存时是否可以为空，默认不能为空，如果null=True，那么可以为空值
+    # blank：指定前端用户在创建数据时，是否需要传递，默认不能为空，如果不传递，需要将blank设置为True
+    # default：为某个字段指定默认值，往往会跟blank一起使用
+    # ①如果前端不传，则使用默认的去保存default，删除null=True
+    desc = models.TextField(verbose_name='项目简介', help_text='项目简介', blank=True, default='xxx简介')
+    # ②如果默认值不需要，需要删除default，加上null=True
+    # desc = models.TextField(verbose_name='项目简介', help_text='项目简介', blank=True, null=True)
+
     # （4）步骤四：创建完数据库模型类之后，需要迁移才能生成数据表
     # ①生成迁移脚本，放在projects/migrations目录中：python manage.py makemigrations
     # ②执行迁移脚本：python manage.py migrate
